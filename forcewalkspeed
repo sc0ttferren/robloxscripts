@@ -3,7 +3,7 @@ local Player = game:GetService("Players").LocalPlayer
 local isRunning = false
 local walkSpeedValue = 16
 local isAlive = true
-local versionNumber = "1.0" -- Change this to the desired version number
+local versionNumber = "1.2"
 
 -- Function to set the walk speed
 local function setWalkSpeed(value)
@@ -57,8 +57,9 @@ local title = Instance.new("TextLabel")
 title.Name = "TitleLabel"
 title.Size = UDim2.new(1, 0, 0, 30)
 title.Position = UDim2.new(0, 0, 0, 0)
-title.Text = "Walk Speed"
+title.Text = "WalkSpeed Spoofer - ScottScripts"
 title.Font = Enum.Font.SourceSansBold
+title.RichText = true
 title.TextSize = 18
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
 title.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
