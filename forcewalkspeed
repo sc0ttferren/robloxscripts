@@ -196,6 +196,7 @@ end
 
 -- Function to handle the "Yes" button click
 local function onYesButtonClick()
+    onResetButtonClick() -- Automatically click the reset button
     gui:Destroy() -- Destroy the walk speed GUI
     notificationGui:Destroy() -- Destroy the notification GUI
 end
