@@ -1,10 +1,9 @@
--- Made By ScottScripts
--- Execute the script if it disappears after a round.
-
 -- Variables
 local Player = game:GetService("Players").LocalPlayer
 local isRunning = false
 local walkSpeedValue = 16
+local isAlive = true
+local versionNumber = "1.0" -- Change this to the desired version number
 
 -- Function to set the walk speed
 local function setWalkSpeed(value)
@@ -12,12 +11,25 @@ local function setWalkSpeed(value)
     Player.Character.Humanoid.WalkSpeed = value
 end
 
--- Main GUI
+-- Function to handle the player's character added event
+local function onCharacterAdded(character)
+    Player.Character.Humanoid.Died:Connect(function()
+        isAlive = false
+        onResetButtonClick() -- Automatically click the reset button when the player dies
+    end)
+end
+
+Player.CharacterAdded:Connect(onCharacterAdded)
+if Player.Character then
+    onCharacterAdded(Player.Character)
+end
+
+-- Create the GUI
 local gui = Instance.new("ScreenGui")
 gui.Name = "WalkSpeedGUI"
 gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
--- Main Frame
+-- Create the frame
 local frame = Instance.new("Frame")
 frame.Name = "MainFrame"
 frame.Size = UDim2.new(0, 200, 0, 160)
@@ -28,7 +40,19 @@ frame.Active = true -- Enable user input
 frame.Draggable = true -- Make the frame draggable
 frame.Parent = gui
 
--- Main Title
+-- Create the version label
+local versionLabel = Instance.new("TextLabel")
+versionLabel.Name = "VersionLabel"
+versionLabel.Size = UDim2.new(0, 50, 0, 20)
+versionLabel.Position = UDim2.new(0, 5, 0, 5)
+versionLabel.Text = "Version: " .. versionNumber
+versionLabel.Font = Enum.Font.SourceSans
+versionLabel.TextSize = 12
+versionLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+versionLabel.BackgroundTransparency = 1
+versionLabel.Parent = frame
+
+-- Create the title
 local title = Instance.new("TextLabel")
 title.Name = "TitleLabel"
 title.Size = UDim2.new(1, 0, 0, 30)
@@ -41,7 +65,7 @@ title.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 title.BorderSizePixel = 0
 title.Parent = frame
 
--- Main input label
+-- Create the input label
 local inputLabel = Instance.new("TextLabel")
 inputLabel.Name = "InputLabel"
 inputLabel.Size = UDim2.new(0.5, -10, 0, 20)
@@ -66,7 +90,7 @@ speedTextBox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 speedTextBox.BorderSizePixel = 0
 speedTextBox.Parent = frame
 
--- start button
+-- Create the start button
 local startButton = Instance.new("TextButton")
 startButton.Name = "StartButton"
 startButton.Size = UDim2.new(0.5, -10, 0, 30)
@@ -80,7 +104,7 @@ startButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
 startButton.BorderSizePixel = 1
 startButton.Parent = frame
 
--- reset button
+-- Create the reset button
 local resetButton = Instance.new("TextButton")
 resetButton.Name = "ResetButton"
 resetButton.Size = UDim2.new(0.5, -10, 0, 30)
@@ -94,7 +118,7 @@ resetButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
 resetButton.BorderSizePixel = 1
 resetButton.Parent = frame
 
--- the close button
+-- Create the close button
 local closeButton = Instance.new("TextButton")
 closeButton.Name = "CloseButton"
 closeButton.Size = UDim2.new(0, 20, 0, 20)
@@ -108,12 +132,12 @@ closeButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
 closeButton.BorderSizePixel = 1
 closeButton.Parent = frame
 
--- notification GUI
+-- Create the notification GUI
 local notificationGui = Instance.new("ScreenGui")
 notificationGui.Name = "NotificationGUI"
 notificationGui.Parent = gui
 
--- notification frame
+-- Create the notification frame
 local notificationFrame = Instance.new("Frame")
 notificationFrame.Name = "NotificationFrame"
 notificationFrame.Size = UDim2.new(0, 200, 0, 100)
@@ -125,7 +149,7 @@ notificationFrame.Draggable = true -- Make the frame draggable
 notificationFrame.Visible = false
 notificationFrame.Parent = notificationGui
 
--- notification label
+-- Create the notification label
 local notificationLabel = Instance.new("TextLabel")
 notificationLabel.Name = "NotificationLabel"
 notificationLabel.Size = UDim2.new(1, 0, 0, 70)
@@ -137,7 +161,7 @@ notificationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 notificationLabel.BackgroundTransparency = 1
 notificationLabel.Parent = notificationFrame
 
--- "Yes" button
+-- Create the "Yes" button
 local yesButton = Instance.new("TextButton")
 yesButton.Name = "YesButton"
 yesButton.Size = UDim2.new(0.5, -5, 0, 30)
@@ -151,7 +175,7 @@ yesButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
 yesButton.BorderSizePixel = 1
 yesButton.Parent = notificationFrame
 
--- "No" button
+-- Create the "No" button
 local noButton = Instance.new("TextButton")
 noButton.Name = "NoButton"
 noButton.Size = UDim2.new(0.5, -5, 0, 30)
@@ -205,9 +229,6 @@ end
 local function onNoButtonClick()
     notificationFrame.Visible = false
 end
-
--- Display version in console
-print("Version V1.0")
 
 -- Connect the button click events
 startButton.MouseButton1Click:Connect(onStartButtonClick)
