@@ -206,6 +206,9 @@ local function onNoButtonClick()
     notificationFrame.Visible = false
 end
 
+-- Display version in console
+print("Version V1.0")
+
 -- Connect the button click events
 startButton.MouseButton1Click:Connect(onStartButtonClick)
 resetButton.MouseButton1Click:Connect(onResetButtonClick)
