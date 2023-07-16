@@ -53,7 +53,7 @@ walkspeedButton.Parent = frame
 
 -- Function to handle the Walkspeed Spoofer button click
 walkspeedButton.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/sc0ttferren/robloxscripts/main/in-plain-sight2/walkspeedspoofer'))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/sc0ttferren/robloxscripts/main/in-plain-sight2/walkspeedspoofer.lua'))()
 end)
 
 -- Create the ESP toggle button
