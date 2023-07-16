@@ -29,6 +29,7 @@ end
 -- Create the GUI
 local gui = Instance.new("ScreenGui")
 gui.Name = "WalkSpeedGUI"
+gui.ResetOnSpawn = false
 gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 -- Create the frame
