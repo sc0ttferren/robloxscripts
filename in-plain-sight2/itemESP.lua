@@ -1,4 +1,4 @@
- -- Variables
+-- Variables
 local guiBackgroundColor = Color3.fromRGB(30, 30, 30)
 local cornerRadius = UDim.new(0, 10)
 local guiSize = UDim2.new(0, 200, 0, 320)
@@ -30,7 +30,7 @@ local title = Instance.new("TextLabel")
 title.Name = "TitleLabel"
 title.Size = UDim2.new(1, 0, 0, 30)
 title.Position = UDim2.new(0, 0, 0, 0)
-title.Text = "Items ESP"
+title.Text = "ItemsESP"
 title.Font = Enum.Font.SourceSansBold
 title.TextSize = 18
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -42,7 +42,7 @@ local valueDropdown = Instance.new("TextButton")
 valueDropdown.Name = "ValueDropdown"
 valueDropdown.Size = UDim2.new(0, 180, 0, 30)
 valueDropdown.Position = UDim2.new(0, 10, 0, 50)
-valueDropdown.Text = "Select Value"
+valueDropdown.Text = "Select Type"
 valueDropdown.Font = Enum.Font.SourceSansBold
 valueDropdown.TextSize = 14
 valueDropdown.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -67,7 +67,7 @@ dropdownList.Parent = frame
 local highlightButton = Instance.new("TextButton")
 highlightButton.Name = "HighlightButton"
 highlightButton.Size = UDim2.new(0, 90, 0, 30)
-highlightButton.Position = UDim2.new(0, 10, 0, 160)
+highlightButton.Position = UDim2.new(0, 10, 0, 175)
 highlightButton.Text = "Highlight"
 highlightButton.Font = Enum.Font.SourceSansBold
 highlightButton.TextSize = 14
@@ -81,7 +81,7 @@ highlightButton.Parent = frame
 local unhighlightButton = Instance.new("TextButton")
 unhighlightButton.Name = "UnhighlightButton"
 unhighlightButton.Size = UDim2.new(0, 90, 0, 30)
-unhighlightButton.Position = UDim2.new(0, 100, 0, 160)
+unhighlightButton.Position = UDim2.new(0, 100, 0, 175)
 unhighlightButton.Text = "Unhighlight"
 unhighlightButton.Font = Enum.Font.SourceSansBold
 unhighlightButton.TextSize = 14
@@ -97,90 +97,128 @@ local function highlightSelected()
     -- Highlight logic here based on the selected value
     local models = game.Workspace:GetDescendants()
     local highlightColor = Color3.fromRGB(255, 0, 0) -- Red color
-    local modelsToHighlight = { -- The names of models to highlight for The Best Price
-        "Gemstone",
-        "Paper",
-        "Chair",
-        "Flower",
-        "Lantern",
-        "Large Lamp",
-        "Mark I",
-        "Extinguisher",
-        "Comfy Chair",
-        "Rug",
-        "Laptop",
-        "Salt",
-        "Monitor",
-        "Flask",
-        "Map",
-        "Magazine",
-        "Trophy",
-        "Coins",
-        "Bat",
-        "Baton",
-        "Cash",
-        "Menu",
-        "Wrench",
-        "Tiny Plant",
-        "Thermos",
-        "Truffle",
-        "Secret Formula",
-        "Movie",
-        "Newton's Cradle",
-        "Tray",
-        "Cooking Pot",
-        "Wedding Ring",
-        "Telephone",
-        "Keyboard",
-        "Info Card",
-        "Jacket",
-        "Hourglass",
-        "Fresh Fish",
-        "Chemicals",
-        "Caviar",
-        "Blueberry Cheesecake",
-        "Blueberry Smoothie",
-        "Baked Pork Buns",
-        "Certificate",
-        "Dragonfruit",
-        "Ring Sculpture",
-        "Shaker",
-        "Spring Rolls",
-        "Safe",
-        "Cookie",
-        "Can",
-        "Telescope",
-        "Picture Frame",
-        "Sushi",
-        "Log",
-        "Kitchen Cutlery",
-        "Washer",
-        "Dinosaur",
-        "Expensive Plant",
-        "Soda Glass",
-        "Trash",
-        "The Captain's Favorite Doubloon",
-        "Pepper"
+    local modelsToHighlight = {
+        ["Best Price"] = {
+            "Gemstone",
+            "Paper",
+            "Chair",
+            "Flower",
+            "Extinguisher",
+            "Comfy Chair",
+            "Rug",
+            "Laptop",
+            "Salt",
+            "Monitor",
+            "Flask",
+            "Map",
+            "Magazine",
+            "Trophy",
+            "Coins",
+            "Bat",
+            "Baton",
+            "Cash",
+            "Menu",
+            "Wrench",
+            "Tiny Plant",
+            "Thermos",
+            "Truffle",
+            "Secret Formula",
+            "Movie",
+            "Newton's Cradle",
+            "Tray",
+            "Cooking Pot",
+            "Wedding Ring",
+            "Telephone",
+            "Keyboard",
+            "Info Card",
+            "Jacket",
+            "Hourglass",
+            "Fresh Fish",
+            "Chemicals",
+            "Caviar",
+            "Blueberry Cheesecake",
+            "Blueberry Smoothie",
+            "Baked Pork Buns",
+            "Certificate",
+            "Dragonfruit",
+            "Ring Sculpture",
+            "Shaker",
+            "Spring Rolls",
+            "Safe",
+            "Cookie",
+            "Can",
+            "Telescope",
+            "Sushi",
+            "Mini Fridge",
+            "The Captain's Favorite Doubloon",
+            "Mop",
+            "Mop Bin",
+            "Moon Juice",
+            "Mochi",
+            "Lobster",
+            "Knife",
+            "Big Trophy",
+            "Backpack",
+            "Keys",
+            "File Box",
+            "Shirt",
+            "Box",
+            "Eraser",
+            "Marker",
+            "Coffee Brewer",
+            "Fax Machine",
+            "Pepper"
+        },
+        ["Least Weight"] = {
+            "Book",
+            "Paper",
+            "Feather",
+            "Bubble",
+            "Air",
+            "Foam",
+            "Balloon"
+        },
+        ["Most Expensive"] = {
+            "Gold",
+            "Printer",
+            "Triangle Sculpture",
+            "Soda Tank",
+            "Refridgerator",
+            "Rabbit Statue",
+            "Toilet",
+            "Water Cooler"
+        }
     }
-    
-    for _, model in ipairs(models) do
-        if model:IsA("Model") and table.find(modelsToHighlight, model.Name) and selectedValue == "Best Price" then
-            for _, part in ipairs(model:GetDescendants()) do
-                if part:IsA("BasePart") then
-                    local highlight = Instance.new("BoxHandleAdornment")
-                    highlight.Name = "Highlight"
-                    highlight.Adornee = part
-                    highlight.Size = part.Size + Vector3.new(0.1, 0.1, 0.1)
-                    highlight.Color3 = highlightColor
-                    highlight.Transparency = 0.5
-                    highlight.AlwaysOnTop = true
-                    highlight.ZIndex = 1
-                    highlight.Parent = part
-    
-                    local transparency = Instance.new("NumberValue")
-                    transparency.Name = "Transparency"
-                    transparency.Value = 0.5
-                    transparency.Parent = highlight
+
+    local modelsToHighlightSelected = modelsToHighlight[selectedValue]
+    if modelsToHighlightSelected then
+        for _, model in ipairs(models) do
+            if model:IsA("Model") and table.find(modelsToHighlightSelected, model.Name) then
+                for _, part in ipairs(model:GetDescendants()) do
+                    if part:IsA("BasePart") then
+                        local highlight = Instance.new("BoxHandleAdornment")
+                        highlight.Name = "Highlight"
+                        highlight.Adornee = part
+                        highlight.Size = part.Size + Vector3.new(0.1, 0.1, 0.1)
+
+                        if selectedValue == "Most Expensive" then
+                            highlight.Color3 = Color3.fromRGB(255, 255, 0) -- Yellow
+                        elseif selectedValue == "Best Price" then
+                            highlight.Color3 = Color3.fromRGB(0, 255, 0) -- Green
+                        else
+                            highlight.Color3 = Color3.fromRGB(255, 0, 0) -- Red (default)
+                        end
+
+                        highlight.Transparency = 0.5
+                        highlight.AlwaysOnTop = true
+                        highlight.ZIndex = 1
+                        highlight.Parent = part
+
+                        local transparency = Instance.new("NumberValue")
+                        transparency.Name = "Transparency"
+                        transparency.Value = 0.5
+                        transparency.Parent = highlight
+                    end
                 end
             end
         end
@@ -247,6 +285,40 @@ for _, item in ipairs(items) do
 
     yOffset = yOffset + 30
 end
+
+-- Extra Info Title
+local extrainfotitle = Instance.new("TextLabel")
+extrainfotitle.Size = UDim2.new(1, 0, 0, 20)  -- Updated size to fit at the bottom
+extrainfotitle.Position = UDim2.new(0, 0, 1, -69)  -- Updated position to fit at the bottom
+extrainfotitle.BackgroundTransparency = 1
+extrainfotitle.TextSize = 25
+extrainfotitle.Text = "<font color=\"rgb(0, 0, 255)\">ESP Colors</font>"
+extrainfotitle.Font = Enum.Font.SourceSansBold
+extrainfotitle.RichText = true
+extrainfotitle.Parent = frame
+
+-- Extra Info Text
+local extrainfo = Instance.new("TextLabel")
+extrainfo.Size = UDim2.new(1, 0, 0, 20)  -- Updated size to fit at the bottom
+extrainfo.Position = UDim2.new(0, 0, 1, -40)  -- Updated position to fit at the bottom
+extrainfo.BackgroundTransparency = 1
+extrainfo.TextSize = 6.9
+extrainfo.Text = "<font color=\"rgb(0, 255, 0)\">Best Price</font>, <font color=\"rgb(255, 0, 0)\">Least Weight</font>, <font color=\"rgb(255, 255, 0)\">Most Expensive</font>."
+extrainfo.RichText = true
+extrainfo.Parent = frame
+
+-- Footer Text - scott owns this pls credit me
+local footerText = Instance.new("TextLabel")
+footerText.Name = "FooterText"
+footerText.Size = UDim2.new(1, 0, 0, 20)
+footerText.Position = UDim2.new(0, 0, 1, -20)
+footerText.Text = "Made by ScottScripts | scottlol#9971"
+footerText.Font = Enum.Font.SourceSansBold
+footerText.TextSize = 14
+footerText.TextColor3 = Color3.fromRGB(255, 255, 255)
+footerText.BackgroundTransparency = 1
+footerText.TextTransparency = 0.9
+footerText.Parent = frame
 
 -- Create the close button
 local closeButton = Instance.new("TextButton")
