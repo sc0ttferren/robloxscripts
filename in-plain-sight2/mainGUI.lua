@@ -142,6 +142,19 @@ end
 -- Connect the new button click event
 itemespButton.MouseButton1Click:Connect(onitemespButtonClick)
 
+-- Footer Text - scott owns this pls credit me
+local footerText = Instance.new("TextLabel")
+footerText.Name = "FooterText"
+footerText.Size = UDim2.new(1, 0, 0, 20)
+footerText.Position = UDim2.new(0, 0, 1, -20)
+footerText.Text = "Made by ScottScripts | scottlol#9971"
+footerText.Font = Enum.Font.SourceSansBold
+footerText.TextSize = 14
+footerText.TextColor3 = Color3.fromRGB(255, 255, 255)
+footerText.BackgroundTransparency = 1
+footerText.TextTransparency = 0.9
+footerText.Parent = frame
+
 -- Create the close button
 local closeButton = Instance.new("TextButton")
 closeButton.Name = "CloseButton"
