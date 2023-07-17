@@ -120,6 +120,28 @@ end
 -- Connect the ESP button click event
 espButton.MouseButton1Click:Connect(toggleESP)
 
+-- Create the item esp button cause yeaaaah
+local itemespButton = Instance.new("TextButton")
+itemespButton.Name = "itemespButton"
+itemespButton.Size = UDim2.new(0, 180, 0, 30)
+itemespButton.Position = UDim2.new(0, 10, 0, 130)
+itemespButton.Text = "Items ESP"
+itemespButton.Font = Enum.Font.SourceSansBold
+itemespButton.TextSize = 14
+itemespButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+itemespButton.BackgroundColor3 = guiBackgroundColor
+itemespButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
+itemespButton.BorderSizePixel = 1
+itemespButton.Parent = frame
+
+-- Function to handle the new button click
+local function onitemespButtonClick()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/sc0ttferren/robloxscripts/main/in-plain-sight2/itemESP.lua'))()
+end
+
+-- Connect the new button click event
+itemespButton.MouseButton1Click:Connect(onitemespButtonClick)
+
 -- Create the close button
 local closeButton = Instance.new("TextButton")
 closeButton.Name = "CloseButton"
