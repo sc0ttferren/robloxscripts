@@ -130,7 +130,7 @@ local function highlightSelected()
             "Red Sparkle Time",
             "Sky Blue Sparkle Time",
             "Teal Sparkle Time",
-            "White Sparkle Time"
+            "White Sparkle Time",
             "Thermos",
             "Truffle",
             "Secret Formula",
