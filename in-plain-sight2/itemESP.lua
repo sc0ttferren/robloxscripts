@@ -120,6 +120,17 @@ local function highlightSelected()
             "Menu",
             "Wrench",
             "Tiny Plant",
+            "Black Sparkle Time",
+            "Green Sparkle Time",
+            "Midnight Blue Sparkle Time",
+            "Orange Sparkle Time",
+            "Original Sparkle Time",
+            "Pink Sparkle Time",
+            "Purple Sparkle Time",
+            "Red Sparkle Time",
+            "Sky Blue Sparkle Time",
+            "Teal Sparkle Time",
+            "White Sparkle Time"
             "Thermos",
             "Truffle",
             "Secret Formula",
@@ -131,6 +142,20 @@ local function highlightSelected()
             "Telephone",
             "Keyboard",
             "Info Card",
+            "Mannequin",
+            "Checkered Lava",
+            "Dominus Astra",
+            "Dominus Aureus",
+            "Dominus Claves",
+            "Dominus Empyreus",
+            "Dominus Frigidus",
+            "Dominus Infernus",
+            "Dominus Messor",
+            "Dominus Pittacium",
+            "Dominus Rex",
+            "Dominus Venari",
+            "Dominus Vespertilio",
+            "Robux",
             "Jacket",
             "Hourglass",
             "Fresh Fish",
@@ -167,6 +192,8 @@ local function highlightSelected()
             "Marker",
             "Coffee Brewer",
             "Fax Machine",
+            "Dodgeball",
+            "Microphone",
             "Pepper"
         },
         ["Least Weight"] = {
@@ -186,7 +213,8 @@ local function highlightSelected()
             "Refridgerator",
             "Rabbit Statue",
             "Toilet",
-            "Water Cooler"
+            "Friendship Badge",
+            "Water Cooler",
         }
     }
 
