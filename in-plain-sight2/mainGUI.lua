@@ -1,8 +1,7 @@
 -- List of blacklisted usernames
 local blacklistUsernames = {
-    "EZ_Eli19",
-    "Treasbiggestglazer",
     "KonixxKade",
+    "Hydrogen",
     -- END OF THE USERNAMES FOR NOW
 }
 
