@@ -1,3 +1,82 @@
+-- List of blacklisted usernames
+local blacklistUsernames = {
+    "EZ_Eli19",
+    "Treasbiggestglazer",
+    "KonixxKade",
+    -- END OF THE USERNAMES FOR NOW
+}
+
+-- Check if the player is blacklisted
+local isBlacklisted = false
+local localPlayerName = game.Players.LocalPlayer.Name
+
+for _, username in ipairs(blacklistUsernames) do
+    if localPlayerName == username then
+        isBlacklisted = true
+        break
+    end
+end
+
+if isBlacklisted then
+    -- Create the blacklist GUI
+    local blacklistGui = Instance.new("ScreenGui")
+    blacklistGui.Name = "BlacklistGui"
+    blacklistGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+    local blacklistFrame = Instance.new("Frame")
+    blacklistFrame.Name = "BlacklistFrame"
+    blacklistFrame.Size = UDim2.new(0, 250, 0, 100)
+    blacklistFrame.Position = UDim2.new(0.5, -125, 0.5, -50)
+    blacklistFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    blacklistFrame.BorderSizePixel = 0
+    blacklistFrame.Active = true
+    blacklistFrame.Draggable = true
+    blacklistFrame.Parent = blacklistGui
+
+    local blacklistTitle = Instance.new("TextLabel")
+    blacklistTitle.Name = "TitleLabel"
+    blacklistTitle.Size = UDim2.new(1, 0, 0, 30)
+    blacklistTitle.Position = UDim2.new(0, 0, 0, 0)
+    blacklistTitle.Text = "You Have Been Blacklisted"
+    blacklistTitle.Font = Enum.Font.SourceSansBold
+    blacklistTitle.TextSize = 15
+    blacklistTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+    blacklistTitle.BackgroundTransparency = 1
+    blacklistTitle.Parent = blacklistFrame
+
+    local blacklistReason = Instance.new("TextLabel")
+    blacklistReason.Name = "ReasonLabel"
+    blacklistReason.Size = UDim2.new(1, 0, 0, 40)
+    blacklistReason.Position = UDim2.new(0, 0, 0, 30)
+    blacklistReason.Text = "tell me if you got blacklisted in call"
+    blacklistReason.Font = Enum.Font.SourceSans
+    blacklistReason.TextSize = 16
+    blacklistReason.TextColor3 = Color3.fromRGB(255, 255, 255)
+    blacklistReason.BackgroundTransparency = 1
+    blacklistReason.Parent = blacklistFrame
+
+    local closeButton1 = Instance.new("TextButton")
+    closeButton1.Name = "closeButton1"
+    closeButton1.Size = UDim2.new(0, 20, 0, 20)
+    closeButton1.Position = UDim2.new(1, -25, 0, 5)
+    closeButton1.Text = "X"
+    closeButton1.Font = Enum.Font.SourceSansBold
+    closeButton1.TextSize = 14
+    closeButton1.TextColor3 = Color3.fromRGB(255, 255, 255)
+    closeButton1.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    closeButton1.BorderSizePixel = 0
+    closeButton1.Parent = blacklistFrame
+
+    -- Function to handle the close button click
+    local function oncloseButton1Click()
+        blacklistGui:Destroy()
+    end
+
+    closeButton1.MouseButton1Click:Connect(oncloseButton1Click)
+
+else
+    -- The player is not blacklisted, load the ScottSight GUI
+    
 -- Variables
 local guiBackgroundColor = Color3.fromRGB(30, 30, 30)
 local cornerRadius = UDim.new(0, 10)
@@ -156,25 +235,26 @@ footerText.TextTransparency = 0.9
 footerText.Parent = frame
 
 -- Create the close button
-local closeButton = Instance.new("TextButton")
-closeButton.Name = "CloseButton"
-closeButton.Size = UDim2.new(0, 20, 0, 20)
-closeButton.Position = UDim2.new(1, -25, 0, 5)
-closeButton.Text = "X"
-closeButton.Font = Enum.Font.SourceSansBold
-closeButton.TextSize = 14
-closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-closeButton.BackgroundColor3 = guiBackgroundColor
-closeButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
-closeButton.BorderSizePixel = 1
-closeButton.Parent = frame
+local closeButton1 = Instance.new("TextButton")
+closeButton1.Name = "closeButton1"
+closeButton1.Size = UDim2.new(0, 20, 0, 20)
+closeButton1.Position = UDim2.new(1, -25, 0, 5)
+closeButton1.Text = "X"
+closeButton1.Font = Enum.Font.SourceSansBold
+closeButton1.TextSize = 14
+closeButton1.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeButton1.BackgroundColor3 = guiBackgroundColor
+closeButton1.BorderColor3 = Color3.fromRGB(255, 0, 0)
+closeButton1.BorderSizePixel = 1
+closeButton1.Parent = frame
 
 -- Function to handle the close button click
-local function onCloseButtonClick()
+local function oncloseButton1Click()
     gui:Destroy()
 end
 
 -- Connect the close button click event
-closeButton.MouseButton1Click:Connect(onCloseButtonClick)
+closeButton1.MouseButton1Click:Connect(oncloseButton1Click)
 
 -- ...
+end
