@@ -62,6 +62,11 @@ local supported_games = {
 		["script_url"] = "https://raw.githubusercontent.com/dizyhvh/rbx_scripts/main/dizzy_hub/scripts/minerscave_15.lua"
 		
 	}, 
+	["13892730225"] = {
+		["name"] = "MinerCraft",
+		["script_url"] = "https://raw.githubusercontent.com/dizyhvh/rbx_scripts/main/dizzy_hub/scripts/minerscave_15.lua"
+		
+	}, 
 	["8892207911"] = {
 		["name"] = "Ragdoll Engine",
 		["script_url"] = "https://raw.githubusercontent.com/dizyhvh/rbx_scripts/main/dizzy_hub/scripts/ragdoll_engine.lua"
