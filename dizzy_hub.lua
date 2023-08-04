@@ -43,8 +43,8 @@ local supported_games = {
 		["name"] = "CraftBlox",
 		["script_url"] = "https://raw.githubusercontent.com/dizyhvh/rbx_scripts/main/dizzy_hub/scripts/minerscave_15.lua"
 	}, 
-	["12566160430"] = {
-		["name"] = "MinersVoxel",
+	["13487078602"] = {
+		["name"] = "MinersOcean",
 		["script_url"] = "https://raw.githubusercontent.com/dizyhvh/rbx_scripts/main/dizzy_hub/scripts/minerscave_15.lua"
 	}, 
 	["12317943351"] = {
