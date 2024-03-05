@@ -194,6 +194,9 @@ local function highlightSelected()
             "Fax Machine",
             "Dodgeball",
             "Microphone",
+            "Honey",
+            "Honeycomb",
+            "JÄTTEMÄTT"
             "Pepper"
         },
         ["Least Weight"] = {

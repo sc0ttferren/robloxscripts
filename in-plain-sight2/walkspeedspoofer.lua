@@ -1,23 +1,20 @@
 -- This script will stop recieving any attention on version 3.0
 
--- Variables
 local Player = game:GetService("Players").LocalPlayer
 local isRunning = false
 local walkSpeedValue = 16
 local isAlive = true
-local versionNumber = "1.3"
+local versionNumber = "1.5"
 
--- Function to set the walk speed
 local function setWalkSpeed(value)
     walkSpeedValue = value
     Player.Character.Humanoid.WalkSpeed = value
 end
 
--- Function to handle the player's character added event
 local function onCharacterAdded(character)
     Player.Character.Humanoid.Died:Connect(function()
         isAlive = false
-        onResetButtonClick() -- Automatically clicks the reset button when the player dies cause yeah
+        onResetButtonClick()
     end)
 end
 
@@ -26,24 +23,25 @@ if Player.Character then
     onCharacterAdded(Player.Character)
 end
 
--- Create the GUI
 local gui = Instance.new("ScreenGui")
 gui.Name = "WalkSpeedGUI"
 gui.ResetOnSpawn = false
 gui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
--- Create the frame
 local frame = Instance.new("Frame")
 frame.Name = "MainFrame"
 frame.Size = UDim2.new(0, 200, 0, 160)
 frame.Position = UDim2.new(0.5, -100, 0.5, -80)
-frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 frame.BorderSizePixel = 0
-frame.Active = true -- Enable user input
-frame.Draggable = true -- Make the frame draggable
+frame.Active = true
+frame.Draggable = true 
 frame.Parent = gui
 
--- Create the version label
+local cornerRadius = UDim.new(0, 10)
+local corner = Instance.new("UICorner")
+corner.CornerRadius = cornerRadius
+corner.Parent = frame
+
 local versionLabel = Instance.new("TextLabel")
 versionLabel.Name = "VersionLabel"
 versionLabel.Size = UDim2.new(0, 50, 0, 20)
@@ -55,7 +53,6 @@ versionLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 versionLabel.BackgroundTransparency = 1
 versionLabel.Parent = frame
 
--- Create the title
 local title = Instance.new("TextLabel")
 title.Name = "TitleLabel"
 title.Size = UDim2.new(1, 0, 0, 30)
@@ -68,7 +65,6 @@ title.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 title.BorderSizePixel = 0
 title.Parent = frame
 
--- Create the input label
 local inputLabel = Instance.new("TextLabel")
 inputLabel.Name = "InputLabel"
 inputLabel.Size = UDim2.new(0.5, -10, 0, 20)
@@ -80,7 +76,6 @@ inputLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 inputLabel.BackgroundTransparency = 1
 inputLabel.Parent = frame
 
--- Create the speed text box
 local speedTextBox = Instance.new("TextBox")
 speedTextBox.Name = "SpeedTextBox"
 speedTextBox.Size = UDim2.new(0.5, -10, 0, 20)
@@ -93,7 +88,6 @@ speedTextBox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 speedTextBox.BorderSizePixel = 0
 speedTextBox.Parent = frame
 
--- Create the start/setspeed button
 local startButton = Instance.new("TextButton")
 startButton.Name = "StartButton"
 startButton.Size = UDim2.new(0.5, -10, 0, 30)
@@ -107,7 +101,6 @@ startButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
 startButton.BorderSizePixel = 1
 startButton.Parent = frame
 
--- Create the reset button
 local resetButton = Instance.new("TextButton")
 resetButton.Name = "ResetButton"
 resetButton.Size = UDim2.new(0.5, -10, 0, 30)
@@ -121,7 +114,6 @@ resetButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
 resetButton.BorderSizePixel = 1
 resetButton.Parent = frame
 
--- Create the close button
 local closeButton = Instance.new("TextButton")
 closeButton.Name = "CloseButton"
 closeButton.Size = UDim2.new(0, 20, 0, 20)
@@ -135,24 +127,21 @@ closeButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
 closeButton.BorderSizePixel = 1
 closeButton.Parent = frame
 
--- Create the notification GUI
 local notificationGui = Instance.new("ScreenGui")
 notificationGui.Name = "NotificationGUI"
 notificationGui.Parent = gui
 
--- Create the notification frame
 local notificationFrame = Instance.new("Frame")
 notificationFrame.Name = "NotificationFrame"
 notificationFrame.Size = UDim2.new(0, 200, 0, 100)
 notificationFrame.Position = UDim2.new(0.5, -100, 0.5, -50)
 notificationFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 notificationFrame.BorderSizePixel = 0
-notificationFrame.Active = true -- Enable user input
-notificationFrame.Draggable = true -- Make the frame draggable
+notificationFrame.Active = true 
+notificationFrame.Draggable = true 
 notificationFrame.Visible = false
 notificationFrame.Parent = notificationGui
 
--- Create the notification label
 local notificationLabel = Instance.new("TextLabel")
 notificationLabel.Name = "NotificationLabel"
 notificationLabel.Size = UDim2.new(1, 0, 0, 70)
@@ -164,7 +153,6 @@ notificationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 notificationLabel.BackgroundTransparency = 1
 notificationLabel.Parent = notificationFrame
 
--- Create the "Yes" button
 local yesButton = Instance.new("TextButton")
 yesButton.Name = "YesButton"
 yesButton.Size = UDim2.new(0.5, -5, 0, 30)
@@ -178,7 +166,6 @@ yesButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
 yesButton.BorderSizePixel = 1
 yesButton.Parent = notificationFrame
 
--- Create the "No" button
 local noButton = Instance.new("TextButton")
 noButton.Name = "NoButton"
 noButton.Size = UDim2.new(0.5, -5, 0, 30)
@@ -192,7 +179,6 @@ noButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
 noButton.BorderSizePixel = 1
 noButton.Parent = notificationFrame
 
--- Function to handle the start button click
 local function onStartButtonClick()
     if isRunning then
         return
@@ -210,30 +196,25 @@ local function onStartButtonClick()
     end
 end
 
--- Function to handle the reset button click
 local function onResetButtonClick()
-    setWalkSpeed(16) -- Set the walk speed to 16
+    setWalkSpeed(16)
     isRunning = false
 end
 
--- Function to handle the close button click
 local function onCloseButtonClick()
     notificationFrame.Visible = true
 end
 
--- Function to handle the "Yes" button click
 local function onYesButtonClick()
-    onResetButtonClick() -- Automatically click the reset button
-    gui:Destroy() -- Destroy the walk speed GUI
-    notificationGui:Destroy() -- Destroy the notification GUI
+    onResetButtonClick()n
+    gui:Destroy() 
+    notificationGui:Destroy() 
 end
 
--- Function to handle the "No" button click
 local function onNoButtonClick()
     notificationFrame.Visible = false
 end
 
--- Connect the button click events
 startButton.MouseButton1Click:Connect(onStartButtonClick)
 resetButton.MouseButton1Click:Connect(onResetButtonClick)
 closeButton.MouseButton1Click:Connect(onCloseButtonClick)
