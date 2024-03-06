@@ -4,7 +4,7 @@ local function displayNotification(title, text)
 
     local frame = Instance.new("Frame")
     frame.Size = UDim2.new(0, 300, 0, 150)
-    frame.Position = UDim2.new(0.5, -150, 1, -180) -- Adjusted position
+    frame.Position = UDim2.new(0.5, -150, 1, -180)
     frame.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
     frame.BorderSizePixel = 0
     frame.Parent = notification
@@ -21,7 +21,7 @@ local function displayNotification(title, text)
     titleLabel.Parent = frame
 
     local textLabel = Instance.new("TextLabel")
-    textLabel.Size = UDim2.new(1, 0, 0.4, 0) -- Adjusted size
+    textLabel.Size = UDim2.new(1, 0, 0.4, 0)
     textLabel.Position = UDim2.new(0, 0, 0.4, 0)
     textLabel.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
     textLabel.BorderSizePixel = 0
@@ -47,7 +47,6 @@ local function displayNotification(title, text)
     end)
     okButton.Parent = frame
 
-    -- Function to handle removal on pressing "R"
     local function removeNotificationOnKeyPress(input)
         if input.KeyCode == Enum.KeyCode.R then
             notification:Destroy()
@@ -58,5 +57,5 @@ local function displayNotification(title, text)
 end
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/BlizTBr/scripts/main/FTAP.lua"))()
-displayNotification("Loaded!", "Key: GoroIsVagabundo")
+displayNotification("Loaded GUI!", "Key: GoroIsVagabundo")
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
